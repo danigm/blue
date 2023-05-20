@@ -70,7 +70,6 @@ import black.strings
 from black import Leaf, Path, click, token
 from black.cache import user_cache_dir
 from black.comments import ProtoComment, make_comment
-from black.files import tomli
 from black.linegen import LineGenerator as BlackLineGenerator
 from black.lines import Line
 from black.nodes import (
@@ -95,6 +94,10 @@ from typing import Any, Dict, Iterator, List, Optional, Pattern
 
 from click.decorators import version_option
 
+try:
+    from black.files import tomllib as tomli
+except ImportError:
+    from black.files import tomli
 
 LOG = logging.getLogger(__name__)
 
